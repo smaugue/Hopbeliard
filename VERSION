@@ -1,0 +1,13 @@
+"""
+1.  Version du projet (réécriture complette = usless ou fin de cycle de dev)
+2.  Ajout / Modification majeur d'un mechanisme (ex : gamemode / mode / etc)
+3.  Ajour / Modification d'un mechanisme (ex : modification du calcule du score)
+4.  Patch micro-modification / patch d'erreur (ex : modification d'un texte)
+"""
+
+VERSION = "0.1.0.0"
+DATE = "2026-10-06"
+PATCH_NOTES = "Initial project of Hopbéliard"
+
+# format v: date, patch_notes
+OLD_VERSIONS  = {}

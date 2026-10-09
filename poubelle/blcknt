@@ -1,0 +1,39 @@
+###
+
+droit des droits (admin)                : 8 création / modification du personnel
+consultation des log & fiche personnel  : 7 consultation des log & fiche personnel
+                                        :
+DROITS APP                              :
+vidéosurveillance                       : 6 accès au caméra
+gestion stock                           : 5 ajout suppression de stoque
+gestion véhoicule                       : 4 ajout suppression de véhicule
+resevation véhicule                     : 3 reservation véhicule réserver un véhicule
+création / édition fiche patien         : 2 création / édition fiche patien
+consultation fiche patien               : 1 consultation fiche patien
+=================================================
+
+1   : consultation patient
+2   : création / édition patient
+4   : réservation véhicule
+8   : gestion véhicule
+16  : vidéosurveillance
+32  : gestion des utilisateur
+64  : reserved
+128 : reserved
+256 : admin
+
+
+=================================================
+
+
+
+DROITS RFID PK=id_user
+accès block op
+accès stock
+accès stock
+accès parking
+accès sale de repos
+accès sale gardiens
+accès infra
+
+###

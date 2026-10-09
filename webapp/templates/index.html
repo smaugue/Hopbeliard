@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hopbéliard</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <header>
+        {{ NAVE_BARE | safe }}
+    </header>
+</body>
+<footer>
+    <div id="AppInfo">
+        <p>Hopbéliard</p>
+        <p>Version : {{ VERSION }}</p>
+    </div>
+</footer>
+<!--<script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>-->
+<script src="/script/index.js" defer></script>
+</html>

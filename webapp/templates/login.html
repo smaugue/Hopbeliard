@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hopbéliard</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div id="login" style="display: block;">
+        <h2>Login</h2>
+        <form id="create-user-form">
+            <label for="playerName">Username:</label>
+            <input type="text" id="playerName" name="username" required>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <button type="button" id="registerButton">Login</button>
+        </form>
+    </div>
+</body>
+<footer>
+    <div id="AppInfo">
+        <p>Hopbéliard</p>
+    </div>
+</footer>
+<!--<script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>-->
+<script src="/script/login.js" defer></script>
+</html>

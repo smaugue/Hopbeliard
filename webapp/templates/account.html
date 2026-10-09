@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hopbéliard</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <header>
+        {{ NAVE_BARE | safe }}
+    </header>
+    <form id="change-passwd-form">
+            <label for="password">Current Password:</label>
+            <input type="password" id="password" name="password" required>
+            <label for="new_password">New Password:</label>
+            <input type="password" id="new_password" name="new_password" required>
+            <label for="new_password_rep">Reapet it:</label>
+            <input type="password" id="new_password_rep" name="new_password_rep" required>
+            <button type="button" id="resetPasswordButton">Reset Password</button>
+    </form>
+</body>
+<footer>
+    <div id="AppInfo">
+        <p>Hopbéliard</p>
+        <p>Version : {{ VERSION }}</p>
+    </div>
+</footer>
+<!--<script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>-->
+<script src="/script/account.js" defer></script>
+</html>

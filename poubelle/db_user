@@ -1,0 +1,50 @@
+PRAGMA foreign_keys = ON;
+
+-- =========================================================
+--  PERSONNEL
+-- =========================================================
+CREATE TABLE IF NOT EXISTS info_g (
+    id            INTEGER PRIMARY KEY AUTOINCREMENT,
+    name           TEXT    NOT NULL,
+    lastname        TEXT    NOT NULL,
+    login         TEXT    NOT NULL UNIQUE,
+    access_level  INTEGER NOT NULL DEFAULT 0 CHECK (access_level >= 0)
+);
+
+CREATE TABLE IF NOT EXISTS login (
+    login   TEXT PRIMARY KEY,
+    psswd   TEXT NOT NULL,   -- SHA-256(mdp + sel) en hexadécimal
+    salt     TEXT NOT NULL,   -- sel aléatoire (hex)
+    FOREIGN KEY (login) REFERENCES info_g(login)
+        ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+-- =========================================================
+--  PATIENT
+-- =========================================================
+CREATE TABLE IF NOT EXISTS chambre (
+    nbchambre    INTEGER PRIMARY KEY,
+    temperature  REAL,       -- ex : 21.5
+    qaire  INTEGER     -- ex : ppm CO2
+);
+
+CREATE TABLE IF NOT EXISTS patient (
+    id      INTEGER PRIMARY KEY AUTOINCREMENT,
+    name     TEXT NOT NULL,
+    lastname  TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS prise_en_charge (
+    id          INTEGER PRIMARY KEY AUTOINCREMENT,
+    id_patient  INTEGER NOT NULL,
+    timstamp  TEXT    NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    chambre     INTEGER NOT NULL,
+    comm        TEXT,
+    FOREIGN KEY (id_patient) REFERENCES patient(id)
+        ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (chambre) REFERENCES chambre(n_chambre)
+        ON UPDATE CASCADE ON DELETE RESTRICT
+);
+
+CREATE INDEX IF NOT EXISTS idx_pec_patient ON prise_en_charge(id_patient);
+CREATE INDEX IF NOT EXISTS idx_pec_chambre ON prise_en_charge(chambre);

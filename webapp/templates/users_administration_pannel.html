@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Hopbéliard</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <header>
+        {{ NAVE_BARE | safe }}
+    </header>
+
+    <section id="usersSection" hidden>
+
+        <div id="usersTables">
+            <h2>Utilisateurs</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Login</th>
+                        <th>Prénom</th>
+                        <th>Nom</th>
+                        <th>Actif</th>
+                        <th>Droits</th>
+                        <th>ACTION</th>
+                    </tr>
+                </thead>
+                <tbody id="usersBody"></tbody>
+            </table>
+            <div id="buttonsPage">
+                <button id="Preced" value=0><</button>
+                <button id="Suite" value=2>></button>
+            </div>
+        </div>
+
+        <div id="console">
+            <p id="addUserMsg"></p>
+        </div>
+
+        <div id="newUserPassword" hidden>
+            <p>Mot de passe provisoire pour <strong id="newUserLogin"></strong> :</p>
+            <code id="newUserPsswd"></code>
+            <button type="button" id="copyPsswdBtn">Copier</button>
+            <p><small>Il ne sera plus affiché. L'utilisateur devra le changer à la première connexion.</small></p>
+        </div>
+
+        <div id="addUserForm">
+            <h3>Ajouter un utilisateur</h3>
+            <form id="addUserForm">
+                <input name="login" placeholder="Login" required>
+                <input name="name" placeholder="Prénom">
+                <input name="lastname" placeholder="Nom">
+                <fieldset id="addUserDroits">
+                    <legend>Droits</legend>
+                </fieldset>
+                <button type="submit">Ajouter</button>
+            </form>
+        </div>
+    </section>
+
+</body>
+<footer>
+    <div id="AppInfo">
+        <p>Hopbéliard</p>
+        <p>Version : {{ VERSION }}</p>
+    </div>
+</footer>
+<script src="/script/index.js" defer></script>
+<script src="/script/users.js" defer></script>
+</html>

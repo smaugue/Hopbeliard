@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Hopbéliard</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <header>
+        {{ NAVE_BARE | safe }}
+    </header>
+
+    <section id="usersSection" hidden>
+
+        <div id="console">
+            <p id="addUserMsg"></p>
+        </div>
+
+        <div id="usersTables">
+            <h2>Patients</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nom</th>
+                        <th>Prénom</th>
+                        <th>Commentaire</th>
+                    </tr>
+                </thead>
+                <tbody id="usersBody"></tbody>
+            </table>
+            <div id="buttonsPatientPage">
+                <button id="PatientPreced" value=0><</button>
+                <button id="PatientSuite" value=2>></button>
+            </div>
+        </div>
+
+        <div id="addPatientForm">
+            <h3>Ajouter un Patient</h3>
+            <form id="addPatientForm">
+                <input name="name" placeholder="Prénom">
+                <input name="lastname" placeholder="Nom">
+                <input name="comm" placeholder="Commentaire" required>
+                <button type="submit">Ajouter</button>
+            </form>
+        </div>
+
+        <div id="pecTables">
+            <h2>Prises en charge</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Time</th>
+                        <th>Objet</th>
+                        <th>Commentaire</th>
+                    </tr>
+                </thead>
+                <tbody id="pecBody"></tbody>
+            </table>
+            <div id="buttonsPecPage">
+                <button id="PecPreced" value=0><</button>
+                <button id="PecSuite" value=2>></button>
+            </div>
+        </div>
+
+        <div id="admitionForm">
+            <h3>Admition</h3>
+            <form id="admitionForm">
+                <input name="objet" placeholder="Objet">
+                <input name="comm" placeholder="Commentaire" required>
+                <button type="submit">Ajouter</button>
+            </form>
+        </div>
+
+    </section>
+
+</body>
+<footer>
+    <div id="AppInfo">
+        <p>Hopbéliard</p>
+        <p>Version : {{ VERSION }}</p>
+    </div>
+</footer>
+<script src="/script/index.js" defer></script>
+<script src="/script/patients.js" defer></script>
+</html>
