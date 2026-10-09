@@ -40,7 +40,7 @@ db: Database = init(config, args)
 konsol('INFO', "Started")
 
 CHALLENGES = {}                         # login -> (challenge, expiration)                     # secondes
- # pour les logins inexistants
+# pour les logins inexistants
 
 #
 # DEFAULT ROUTE
@@ -347,4 +347,4 @@ def api_template():
 #
 
 if __name__ == '__main__':
-    socketio.run(app, host=config.HOST, port=config.PORT, use_reloader=False)
+    socketio.run(app, host=config.HOST, port=config.PORT, use_reloader=False) #allow_unsafe_werkzeug=True pour lancer avec systemctl
