@@ -335,8 +335,6 @@ def add_admition():
         return jsonify(ok=True)
     return jsonify(ok=False, error="Patient inconnu"), 400
 
-    
-
 def api_template():
     if session.get('login'):
         print("do somthink")
