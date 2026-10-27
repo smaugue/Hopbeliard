@@ -1,29 +1,31 @@
+//déclaration des bibliothèques utilisé
 #include <WiFi.h>
 #include <PubSubClient.h>
 #include <DHT.h>
 #include <Wire.h>
 #include <Adafruit_PN532.h>
 
+// déclaration des capteurs
 #define DHT_PIN 13
 #define DHT_TYPE DHT11
 DHT dht(DHT_PIN, DHT_TYPE);
 
 int sensorValue;
 
-// Connexion I2C pour le NFC (Utilisation des broches 4 et 5 pour ne pas bloquer l'ESP32)
 Adafruit_PN532 nfc(4, 5);
 
-// --- CONFIGURATION ---
+// paramètres pour la connection au wifi et au serveur MQTT
 const char* ssid = "G10-SAE-hopital";
 const char* password = "G10-SAE-hopital";
 const char* mqtt_server = "10.2.2.248";
 
-WiFiClient esp;
-PubSubClient client(esp);
-
 const char* mqtt_user = "esp_Block_OP";
 const char* mqtt_mdp = "esp_Block_OP";
 
+WiFiClient esp;
+PubSubClient client(esp);
+
+// fonction pour la connexion au wifi
 void setup_wifi() {
   delay(10);
   Serial.print("\nConnexion a ");
@@ -45,9 +47,9 @@ void setup_wifi() {
   Serial.println(WiFi.localIP());
 }
 
+// fonction pour la connexion au serveur MQTT
 void reconnect() {
   while (!client.connected()) {
-    // Connexion simple avec ID, utilisateur et mot de passe (sans Last Will)
     if (client.connect("esp32_coeur", mqtt_user, mqtt_mdp)) {
       Serial.println("Connecté au Broker !");      
     } 
@@ -108,12 +110,13 @@ void loop() {
   String tempStr = String(temp);
   String humiStr = String(humi);
 
+  // publication des données du capteur de température sur le serveur MQTT
   client.publish("BlockOP/temp", tempStr.c_str(), true);
   client.publish("BlockOP/humi", humiStr.c_str(), true);
 
   /*-------------------------------------------*/
   // capteur qualité de l'air
-  sensorValue = analogRead(34); // Borne 34 (ADC) spécifique à l'ESP32
+  sensorValue = analogRead(34);
   Serial.print("Qualité de l'air= ");
   Serial.println(sensorValue);
 
